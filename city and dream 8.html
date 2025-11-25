@@ -102,7 +102,6 @@
       display: inline-block;
     }
 
-    /* 隐藏的内容（第二阶段） */
     .hidden {
       display: none;
     }
@@ -114,7 +113,6 @@
   <div class="container">
     <h1>21:00</h1>
 
-    <!-- 阶段1：地图 -->
     <div id="mapStage">
       <p style="font-size:1.4rem; margin-bottom:20px;">At 9pm, click on my favorite place in New York.</p>
       <div class="map-container">
@@ -123,7 +121,6 @@
       </div>
     </div>
 
-    <!-- 阶段2：切换后的夜景 -->
     <div id="sceneStage" class="hidden">
       <img src="Images/2.png" alt="Times Square Night" />
       <a href="https://www.timessquarenyc.org/">Explore Times Square</a>
@@ -136,7 +133,6 @@
   </div>
 
   <script>
-    // 星空生成
     const starsContainer = document.getElementById('stars');
     const numStars = 150; 
     for (let i = 0; i < numStars; i++) {
@@ -151,7 +147,6 @@
       starsContainer.appendChild(star);
     }
 
-    // 点击事件：从地图切换到夜景
     const marker = document.getElementById('timesSquareMarker');
     const mapStage = document.getElementById('mapStage');
     const sceneStage = document.getElementById('sceneStage');
