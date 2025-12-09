@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>City of Sleep — 18:00</title>
+<style>
+:root{
+  --box-width: min(900px, 86vw);
+  --box-padding: 34px;
+  --transition-speed: 700ms;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;scroll-behavior:smooth;}
+body{
+  font-family: "Inter",sans-serif;
+  color:#fff;
+  overflow-y:scroll;
+}
+.bg-wrap{
+  position:fixed;
+  inset:0;
+  z-index:0;
+}
+.bg-item{
+  position:absolute;
+  inset:0;
+  background-position:center;
+  background-size:cover;
+}
+.section{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  z-index:2;
+}
+.text-box{
+  background: rgba(255,255,255,0.8); 
+  text-align:center;
+  color: #000; 
+}
+.text-box p{
+  font-size:18px;
+  line-height:1.8;
+  white-space:pre-line;
+}
+.clock{
+  position:fixed;
+  top:2vh;      
+  left:50%;
+  transform:translateX(-50%);
+  font-size:15vw;
+  font-weight:700; 
+}
+</style>
+</head>
+<body>
+<div class="bg-wrap">
+  <div class="bg-item active" id="bg1"
+       style="background-image:url('file:///Users/sunny/Desktop/TNS/sophomore/Core1%20Intereaction/Images/18-1.jpg')"></div>
+  <div class="bg-item" id="bg2"
+       style="background-image:url('file:///Users/sunny/Desktop/TNS/sophomore/Core1%20Intereaction/Images/18.jpg')"></div>
+</div>
+<div class="clock" id="clock">18:00</div>
+<section class="section">
+  <div class="text-box">
+    <p>I really like New York at 6 pm because the sky is gradually turning orange. The lights on the roadside and in rooms have also been gradually turned on by people, including the iconic Empire State Building in New York. When its windows light up, it means that everyone is beginning to enjoy nightlife.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="text-box">
+    <p>The sunset is brief, and the sky is gradually darkening, but the lights in New York will not completely darken the city at 18:00.
+I really enjoy this time in New York. I may be finishing my last class of the day in a teaching building, boarding a boat with friends at a ferry crossing on Wall Street to enjoy the sea breeze, or eating delicious noodles on 33rd Street. Everything is beautiful and unpredictable.
+<span class="highlight">I am looking forward to the next 18:00</span></p>
+  </div>
+</section>
+</body>
+</html>
+<script>
+const bg1=document.getElementById('bg1');
+const bg2=document.getElementById('bg2');
+const clock=document.getElementById('clock');
+const boxes=document.querySelectorAll('.text-box');
+function onScroll(){
+  const y=scrollY;
+  const h=innerHeight;
+  const progress=Math.min(1, y/h);
+  bg1.style.opacity=1-progress;
+  bg2.style.opacity=progress;
+  boxes.forEach((box,i)=>{
+  });
+}
+onScroll();
+addEventListener('scroll',onScroll,{passive:true});
+</script>
+</body>
+</html>

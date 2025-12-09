@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>23:59</title>
+<style>
+    body {
+        background: black;
+        color: white;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        position: relative;
+    }
+
+    .top-light {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 600px;
+        background: linear-gradient(
+            to bottom,
+            rgba(255, 240, 150, 0.3) 0%,
+            rgba(255, 240, 150, 0.15) 40%,
+            rgba(255, 240, 150, 0.03) 70%,
+            rgba(0,0,0,0) 100%
+        );
+        pointer-events: none;
+        transition: opacity 1.5s ease;
+    }
+
+    h1 {
+    font-size: 200px;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    z-index: 10;
+}
+
+
+    button {
+        margin-top: 20px;
+        padding: 12px 24px;
+        font-size: 20px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .images {
+        width: 90%;
+        max-width: 900px;
+        margin: 60px auto;
+        display: grid;
+        gap: 40px;
+    }
+    .countdown {
+    margin-top: 330px;
+    font-size: 40px;
+}
+
+    .item img {
+        width: 100%;
+    }
+    .grayscale {
+    filter: grayscale(100%);
+}
+}
+</style>
+</head>
+<body>
+<div class="top-light" id="light"></div>
+<h1 id="main-title">23:59</h1>
+<div class="countdown" id="countdown"></div>
+<button onclick="startCountdown()">Start Countdown</button>
+<div class="images">
+    <p>At midnight, it is the end of the day and the beginning of a new day. I rarely go to bed before 12 o'clock now because I always feel like there's something I can't finish every day, and 12 o'clock is like a deadline that makes me feel very anxious.</p>
+    <div class="item">
+        <img src="file:///Users/sunny/Desktop/TNS/sophomore/Core1%20Intereaction/Images/20.png" alt="">
+        <p>At the deadline of twelve o'clock, there are a lot of emails waiting for me to check, a lot of homework to be completed, and there are things that can never be finished.</p>
+    </div>
+    <div class="item">
+        <img src="file:///Users/sunny/Desktop/TNS/sophomore/Core1%20Intereaction/Images/IMG_8274.JPG" alt="">
+        <p>I am very anxious and don't want to do anything, but I can't sleep either, so I often use social media. I want to chat with friends, I want to eat delicious food, I want to go home, I want to go out and play. At midnight, these thoughts became increasingly strong and I couldn't ignore them.</p>
+    </div>
+    <div class="item">
+        <img src="file:///Users/sunny/Desktop/TNS/sophomore/Core1%20Intereaction/Images/23.png" alt="">
+        <p>I tried many methods in order to go to bed at twelve o'clock. My friend recommended some medicine to me, and I finally fell asleep yesterday.</p>
+    </div>
+    <div class="item">
+        <img src="file:///Users/sunny/Desktop/TNS/sophomore/Core1%20Intereaction/Images/21.png" alt="">
+        <p>I am trying to discover some methods that help with sleep, and I believe many people need this. If you want to know more, I have provided a link to read the details.</p>
+        <br>
+        <a href="https://www.nectarsleep.com/posts/how-to-get-more-deep-sleep?fbclid=IwAR20BmaLwDalZvyvmCkwvq9PQjz3kRrJDfZcObQD6Se_c09G3rqz5eEyotU%3Ffbclid%3DIwAR20BmaLwDalZvyvmCkwvq9PQjz3kRrJDfZcObQD6Se_c09G3rqz5eEyotU%3Ffbclid%3DIwAR20BmaLwDalZvyvmCkwvq9PQjz3kRrJDfZcObQD6Se_c09G3rqz5eEyotU%3Ffbclid%3DIwAR20BmaLwDalZvyvmCkwvq9PQjz3kRrJDfZcObQD6Se_c09G3rqz5eEyotU%3Ffbclid%3DIwAR20BmaLwDalZvyvmCkwvq9PQjz3kRrJDfZcObQD6Se_c09G3rqz5eEyotU%3Ffbclid%3DIwAR20BmaLwDalZvyvmCkwvq9PQjz3kRrJDfZcObQD6Se_c09G3rqz5eEyotU%3Ffbclid%3DIwAR20BmaLwDalZvyvmCkwvq9PQjz3kRrJDfZcObQD6Se_c09G3rqz5eEyotU%3Ffbclid%3DIwAR20BmaLwDalZvyvmCkwvq9PQjz3kRrJDfZcObQD6Se_c09G3rqz5eEyotU%3Ffbclid%3DIwAR20BmaLwDalZvyvmCkwvq9PQjz3kRrJDfZcObQD6Se_c09G3rqz5eEyotU%3Ffbclid%3DIwAR20BmaLwDalZvyvmCkwvq9PQjz3kRrJDfZcObQD6Se_c09G3rqz5eEyotU%3Ffbclid%3DIwAR20BmaLwDalZvyvmCkwvq9PQjz3kRrJDfZcObQD6Se_c09G3rqz5eEyotU%3Ffbclid%3DIwAR20BmaLwDalZvyvmCkwvq9PQjz3kRrJDfZcObQD6Se_c09G3rqz5eEyotU%3Ffbclid%3DIwAR20BmaLwDalZvyvmCkwvq9PQjz3kRrJDfZcObQD6Se_c09G3rqz5eEyotU%3Ffbclid%3DIwAR20BmaLwDalZvyvmCkwvq9PQjz3kRrJDfZcObQD6Se_c09G3rqz5eEyotU&utm_source=google&utm_medium=cpc&utm_campaign=p_1416112956_59188265693_358991746241&utm_content=cpc_generic&rh_s=google&rh_m=cpc&rh_c=p_1416112956_59188265693_358991746241&rh_n=cpc_generic&gad_source=1&gad_campaignid=1416112956&gbraid=0AAAAAD1ytc3JQ5E72z_BryffH3Y3H1RLW&gclid=Cj0KCQiAoZDJBhC0ARIsAERP-F9Kz8rtFB8V2HiZosHmhGfbVwb3MdcvaZbDMo28AhMumAMhxwwIQroaAmc8EALw_wcB">5 ways to help you sleep</a>
+    </div>
+</div>
+<script>
+function startCountdown() {
+    let seconds = 10;
+    const countdownEl = document.getElementById("countdown");
+    const titleEl = document.getElementById("main-title");
+    const lightEl = document.getElementById("light");
+
+    countdownEl.textContent = seconds + "s";
+
+    const timer = setInterval(() => {
+        seconds--;
+        countdownEl.textContent = seconds + "s";
+
+        if (seconds <= 0) {
+            clearInterval(timer);
+            countdownEl.textContent = "";
+            titleEl.textContent = "00:00";
+            lightEl.style.opacity = 0;
+            images.forEach(img => img.classList.add("grayscale"));
+        }
+    }, 1000);
+}
+</script>
+</body>
+</html>

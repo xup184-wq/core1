@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6:00</title>
+<style>
+body {
+  font-family: "Noto Sans SC", sans-serif;
+  background: linear-gradient(to top, #000000, #9BB4C0);
+  color: white;
+}
+.header {
+  padding: 250px 10px 40px 10px;
+}
+.header h1 {
+  margin: 0;
+  color: #ffffff;
+  position: fixed;    
+  top: 15%;             
+  left: 50%;            
+  transform: translate(-50%, -50%);
+  font-size: 15vw;
+  z-index: 1000;
+  pointer-events: none;  
+}
+.header p {
+  font-size: 1.5em;
+  max-width: 900px;
+  margin: 20px auto 0 auto;
+  color: #F8F7BA;
+}
+.section {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 10%;
+}
+.section:nth-child(even) {
+  flex-direction: row-reverse;
+}
+.section img {
+  max-width: 500px;
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>6:00</h1>
+  <p>
+  At six o'clock in the morning, the sky in New York is slightly bright, with a beautiful gray blue color. Only a portion of people woke up from their dreams, and the city remained quiet. Walking on the street at six o'clock, I can hear the sound of early morning, quiet and blurry.
+  </p>
+</div>
+<div class="section">
+  <img src="file:///Users/sunny/Desktop/TNS/sophomore/Core1%20Intereaction/Images/IMG_8059.jpg" alt="bird">
+  <div>
+    <audio controls>
+      <source src="file:///Users/sunny/Desktop/TNS/sophomore/Core1%20Intereaction/Images/bird.wav" type="audio/mpeg">
+    </audio>
+    <div class="audio-desc">
+      I can always hear birds chirping in the morning,<br>
+      they wake up early and use their calls to wake people up. <br>
+      I really like this peaceful feeling,<br>
+      I feel like all the creatures in the world<br>
+      are gradually awakening.
+    </div>
+  </div>
+</div>
+<div class="section">
+  <img src="file:///Users/sunny/Desktop/TNS/sophomore/Core1%20Intereaction/Images/IMG_8062.jpg" alt="2">
+  <div>
+    <audio controls>
+      <source src="file:///Users/sunny/Desktop/TNS/sophomore/Core1%20Intereaction/Images/walk.wav" type="audio/mpeg">
+    </audio>
+    <div class="audio-desc">
+      I can still hear the footsteps of people walking on the road.<br>
+      In the morning, <br>
+      everyone's pace has slowed down, <br>
+      just like time has slowed down.<br>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <img src="file:///Users/sunny/Desktop/TNS/sophomore/Core1%20Intereaction/Images/IMG_8057.jpg" alt="1">
+  <div>
+    <audio controls>
+      <source src="file:///Users/sunny/Desktop/TNS/sophomore/Core1%20Intereaction/Images/windy.wav" type="audio/mpeg">
+    </audio>
+    <div class="audio-desc">
+      The morning wind is soft and cool, <br>
+      gently blowing on my face, <br>
+      making me gradually clear headed. <br>
+      The sound of the wind is also very light and needs to be<br>
+      listened to carefully.<br>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <img src="file:///Users/sunny/Desktop/TNS/sophomore/Core1%20Intereaction/Images/IMG_8058.JPG" alt="脚步声">
+  <div>
+    <audio controls>
+      <source src="file:///Users/sunny/Desktop/TNS/sophomore/Core1%20Intereaction/Images/city.wav" type="audio/mpeg">
+    </audio>
+    <div class="audio-desc">
+      At this moment,<br>
+      New York seems to be breathing lightly, <br>
+      and I can hear the voice of the city. <br>
+      I am also ready to welcome a new day in this city.
+    </div>
+  </div>
+</div>
+<script>
+document.addEventListener('mousemove', (e) => {
+  const x = e.clientX / window.innerWidth;
+  const y = e.clientY / window.innerHeight;
+  const angle = Math.round(x * 360);
+  document.body.style.background = `linear-gradient(${angle}deg, #A3CCDA, #F5D2D2 ${y * 100}%)`;
+});
+</script>
+</body>
+</html>
