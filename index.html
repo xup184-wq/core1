@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Homepage — Giant Circular Time</title>
+<style>
+  body {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    min-height: 100vh;
+    position: relative;
+    overflow: auto; 
+    padding: 20px;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('Images/nyc-map.jpg') no-repeat center center;
+    background-size: cover;
+    filter: blur(2px);
+    z-index: -1;
+  }
+
+  .main-title {
+    font-size: 8rem;
+    margin-bottom: 10px;
+    color: #000;
+    text-align: left;
+  }
+
+  .subtitle {
+    font-size: 3rem;
+    margin-bottom: 40px;
+    color: #000;
+    text-align: left;
+  }
+
+  .clock-container {
+    position: relative;
+    width: 700px;
+    height: 700px;
+    z-index: 1;
+    margin: 0 auto;
+  }
+
+  .hand {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: bottom center;
+    background: #000;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .hour-hand { width: 8px; height: 200px; }
+  .minute-hand { width: 6px; height: 250px; }
+  .second-hand { width: 3px; height: 270px; background: #ff5e5e; }
+  .clock-number {
+    position: absolute;
+    color: #000;
+    font-weight: bold;
+    font-size: 3rem;
+    cursor: pointer;
+    user-select: none;
+    text-decoration: none;
+  }
+
+  .clock-number:hover {
+    color: red;
+    transform: scale(1.5);
+  }
+  .clock-text {
+    margin-top: 20px;
+    text-align: center;
+    line-height: 1.5;
+    font-size: 1.8rem;
+    color: #000;
+    width: 100%;
+  }
+
+  @media(max-width:800px){
+    .main-title { font-size: 3rem; }
+    .subtitle { font-size: 1.2rem; margin-bottom: 30px; }
+    .clock-container { width: 500px; height: 500px; }
+    .hour-hand { height: 140px; width: 6px; }
+    .minute-hand { height: 180px; width: 5px; }
+    .second-hand { height: 200px; width: 3px; }
+    .clock-number { font-size: 2rem; }
+    .clock-text { font-size: 1.4rem; margin-top: 20px; }
+  }
+
+  @media(max-width:500px){
+    .main-title { font-size: 2rem; }
+    .subtitle { font-size: 1rem; margin-bottom: 20px; }
+    .clock-container { width: 300px; height: 300px; }
+    .hour-hand { height: 90px; width: 4px; }
+    .minute-hand { height: 120px; width: 3px; }
+    .second-hand { height: 140px; width: 2px; }
+    .clock-number { font-size: 1.2rem; }
+    .clock-text { font-size: 1rem; margin-top: 15px; }
+  }
+</style>
+</head>
+<body>
+  <div class="main-title">FEEL TIME</div>
+  <div class="subtitle">I have recorded my feelings about each time during the two years I lived in New York.</div>
+
+  <div class="clock-container" id="clockContainer">
+    <div class="hand hour-hand"></div>
+    <div class="hand minute-hand"></div>
+    <div class="hand second-hand"></div>
+  </div>
+
+  <div class="clock-text">
+    Time in New York, New York, USA<br>
+    EST (Eastern Standard Time) UTC/GMT -5 hours
+  </div>
+
+<script>
+  const clock = document.getElementById('clockContainer');
+
+  const times = [
+    {label:'00:00', href:'city and dream 10.html'},
+    {label:'3:00', href:'city and dream 1.html'},
+    {label:'6:00', href:'city and dream 2.html'},
+    {label:'8:00', href:'city and dream 3.html'},
+    {label:'10:00', href:'city and dream 4.html'},
+    {label:'12:00', href:'city and dream 5.html'},
+    {label:'15:00', href:'city and dream 6.html'},
+    {label:'18:00', href:'city and dream 7.html'},
+    {label:'21:00', href:'city and dream 8.html'},
+    {label:'23:00', href:'city and dream 9.html'}
+  ];
+
+  const centerX = 350;
+  const centerY = 350;
+  const radius = 300;
+
+  times.forEach((time, index) => {
+    const angle = (index / times.length) * 2 * Math.PI - Math.PI/2;
+    const x = centerX + radius * Math.cos(angle);
+    const y = centerY + radius * Math.sin(angle);
+
+    const num = document.createElement('a');
+    num.className = 'clock-number';
+    num.href = time.href;
+    num.style.left = `${x}px`;
+    num.style.top = `${y}px`;
+    num.style.transform = 'translate(-50%, -50%)';
+    num.textContent = time.label;
+
+    clock.appendChild(num);
+  });
+
+  const hourHand = clock.querySelector('.hour-hand');
+  const minuteHand = clock.querySelector('.minute-hand');
+  const secondHand = clock.querySelector('.second-hand');
+
+  function updateClock() {
+    const now = new Date();
+    const hours = now.getHours() % 12;
+    const minutes = now.getMinutes();
+    const seconds = now.getSeconds();
+
+    const hourDeg = (hours + minutes/60) * 30;
+    const minuteDeg = (minutes + seconds/60) * 6;
+    const secondDeg = seconds * 6;
+
+    hourHand.style.transform = `translate(-50%, -100%) rotate(${hourDeg}deg)`;
+    minuteHand.style.transform = `translate(-50%, -100%) rotate(${minuteDeg}deg)`;
+    secondHand.style.transform = `translate(-50%, -100%) rotate(${secondDeg}deg)`;
+  }
+
+  setInterval(updateClock, 1000);
+  updateClock();
+</script>
+
+</body>
+</html>
