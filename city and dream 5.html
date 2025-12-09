@@ -6,106 +6,54 @@
   <title>12:00</title>
   <style>
     :root{
-      --bg: #FFF3B0;
+      --bg: #FFA239;
       --max-width:1100px;
       --gap:28px;
-      --card-radius:12px;
       --content-padding:32px;
     }
     html,body{height:100%;}
     body{
-      margin:0;
       font-family:sans-serif;
       background: var(--bg);
       display:flex;
       justify-content:center;
-      -webkit-font-smoothing:antialiased;
       position:relative;
       padding:40px 18px;
       color:#222;
-      overflow-y:auto;
     }
-
-    body::before{
-      content:"";
+    body:before{
       position:fixed;
-      right:-30%;
-      top:-30%;
-      width:2000px;
-      height:2000px;
-      pointer-events:none;
-      background: conic-gradient(from -20deg at 90% 10%, rgba(255,255,210,0.35), rgba(255,255,210,0.05) 25%, transparent 30%);
-      filter: blur(25px);
-      mix-blend-mode:normal;
-      z-index:1;
     }
-
     h1{
       font-size:200px;
-      margin:0;
       font-weight:900;
-      letter-spacing:3px;
-      color:#000000;
+      color:#FFFFFF;
       text-shadow:none;
       position:fixed;
       top:20px;
       left:50%;
       transform:translateX(-50%);
       z-index:99999;
-      background: none;
-      display:inline-block;
-      padding:0;
-      border-radius:0;
     }
-
     .wrapper{
       width:100%;
-      max-width:var(--max-width);
       display:grid;
       grid-template-columns: 1fr 1fr;
       gap:var(--gap);
       margin-top:400px;
-      align-items:start;
     }
-
     .left, .right{
       background: rgba(255,255,255,0.35);
-      padding:var(--content-padding);
-      border-radius:var(--card-radius);
-      backdrop-filter: blur(4px);
-      box-shadow: 0 8px 30px rgba(30,30,30,0.06);
     }
-
     .gallery{
       display:flex;
       flex-direction:column;
       gap:18px;
     }
-    .item{
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-    }
     .item img{
       width:100%;
-      height:300px;
+      height:400px;
       object-fit:cover;
-      border-radius:0;
-      display:block;
-    }
-    .caption{
-      font-size:14px;
-      color:#222;
-    }
-
-    @media (max-width:860px){
-      .wrapper{grid-template-columns:1fr;}
-      h1{font-size:64px}
-    }
-
-    @media (max-width:420px){
-      h1{font-size:48px}
-      .item img{height:200px}
     }
   </style>
 </head>
@@ -132,7 +80,6 @@
         </figure>
       </div>
     </section>
-
     <aside class="right">
       <div class="gallery">
         <figure class="item">
