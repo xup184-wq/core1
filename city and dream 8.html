@@ -21,14 +21,19 @@
     }
     .container {
       max-width: 1000px;
-      padding: 80px 20px 120px;
+      padding: 300px 20px 120px;
       text-align: center;
       z-index: 1;
       position: relative;
-    }
+}
     h1 {
-      font-size: 12rem;
-      margin-top: 40px;
+      font-size: 200px;
+      position: fixed; 
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      margin: 0;
+      z-index: 10;
       color: #fff;
     }
     .map-container img {
@@ -127,7 +132,7 @@
       loadScene(
         'Images/vessel.jpg',
         'https://www.hudsonyardsnewyork.com/discover/vessel',
-        "The Vessel is one of the most unique structures in NYC. Its honeycomb-like stairs invite people to climb and look out across the city; at night the lights and shadows change its mood.",
+        "For me, Pinecone has always been a mysterious place. Although I have passed by it many times, I have never entered because I have heard some news about it. Many people jumped down the stairs inside, as if attracted by some mysterious force.",
         'The Vessel'
       );
     });
@@ -136,7 +141,7 @@
       loadScene(
         'Images/4.png',
         'https://www.centralparknyc.org/',
-        "Central Park at night feels peaceful and quiet — different from Times Square. Walking along the paths you can still find small pockets of light and sounds from the city beyond.",
+        "The Central Park at night has a different feeling, as if it has become even more mysterious. The green lake water is like a witch's potion, as if bubbles will emerge in the next second.",
         'Central Park'
       );
     });
