@@ -6,14 +6,11 @@
 <title>23:59</title>
 <style>
     body {
-        margin: 0;
         background: black;
         color: white;
         font-family: Arial, sans-serif;
         text-align: center;
-        transition: background 1.5s ease;
         position: relative;
-        overflow-x: hidden;
     }
 
     .top-light {
@@ -34,16 +31,21 @@
     }
 
     h1 {
-        font-size: 200px;
-        margin-top: 80px;
-    }
+    font-size: 200px;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    z-index: 10;
+}
+
 
     button {
         margin-top: 20px;
         padding: 12px 24px;
         font-size: 20px;
         border: none;
-        border-radius: 6px;
         cursor: pointer;
     }
 
@@ -54,28 +56,25 @@
         display: grid;
         gap: 40px;
     }
+    .countdown {
+    margin-top: 330px;
+    font-size: 40px;
+}
 
     .item img {
         width: 100%;
-        border-radius: 10px;
     }
-
-    .item p {
-        margin-top: 10px;
-        font-size: 18px;
-    }
+    .grayscale {
+    filter: grayscale(100%);
+}
+}
 </style>
 </head>
 <body>
-
 <div class="top-light" id="light"></div>
-
 <h1 id="main-title">23:59</h1>
-
 <div class="countdown" id="countdown"></div>
-
 <button onclick="startCountdown()">Start Countdown</button>
-
 <div class="images">
     <p>At midnight, it is the end of the day and the beginning of a new day. I rarely go to bed before 12 o'clock now because I always feel like there's something I can't finish every day, and 12 o'clock is like a deadline that makes me feel very anxious.</p>
     <div class="item">
@@ -97,8 +96,6 @@
         <a href="https://www.nectarsleep.com/posts/how-to-get-more-deep-sleep?fbclid=IwAR20BmaLwDalZvyvmCkwvq9PQjz3kRrJDfZcObQD6Se_c09G3rqz5eEyotU%3Ffbclid%3DIwAR20BmaLwDalZvyvmCkwvq9PQjz3kRrJDfZcObQD6Se_c09G3rqz5eEyotU%3Ffbclid%3DIwAR20BmaLwDalZvyvmCkwvq9PQjz3kRrJDfZcObQD6Se_c09G3rqz5eEyotU%3Ffbclid%3DIwAR20BmaLwDalZvyvmCkwvq9PQjz3kRrJDfZcObQD6Se_c09G3rqz5eEyotU%3Ffbclid%3DIwAR20BmaLwDalZvyvmCkwvq9PQjz3kRrJDfZcObQD6Se_c09G3rqz5eEyotU%3Ffbclid%3DIwAR20BmaLwDalZvyvmCkwvq9PQjz3kRrJDfZcObQD6Se_c09G3rqz5eEyotU%3Ffbclid%3DIwAR20BmaLwDalZvyvmCkwvq9PQjz3kRrJDfZcObQD6Se_c09G3rqz5eEyotU%3Ffbclid%3DIwAR20BmaLwDalZvyvmCkwvq9PQjz3kRrJDfZcObQD6Se_c09G3rqz5eEyotU%3Ffbclid%3DIwAR20BmaLwDalZvyvmCkwvq9PQjz3kRrJDfZcObQD6Se_c09G3rqz5eEyotU%3Ffbclid%3DIwAR20BmaLwDalZvyvmCkwvq9PQjz3kRrJDfZcObQD6Se_c09G3rqz5eEyotU%3Ffbclid%3DIwAR20BmaLwDalZvyvmCkwvq9PQjz3kRrJDfZcObQD6Se_c09G3rqz5eEyotU%3Ffbclid%3DIwAR20BmaLwDalZvyvmCkwvq9PQjz3kRrJDfZcObQD6Se_c09G3rqz5eEyotU%3Ffbclid%3DIwAR20BmaLwDalZvyvmCkwvq9PQjz3kRrJDfZcObQD6Se_c09G3rqz5eEyotU%3Ffbclid%3DIwAR20BmaLwDalZvyvmCkwvq9PQjz3kRrJDfZcObQD6Se_c09G3rqz5eEyotU&utm_source=google&utm_medium=cpc&utm_campaign=p_1416112956_59188265693_358991746241&utm_content=cpc_generic&rh_s=google&rh_m=cpc&rh_c=p_1416112956_59188265693_358991746241&rh_n=cpc_generic&gad_source=1&gad_campaignid=1416112956&gbraid=0AAAAAD1ytc3JQ5E72z_BryffH3Y3H1RLW&gclid=Cj0KCQiAoZDJBhC0ARIsAERP-F9Kz8rtFB8V2HiZosHmhGfbVwb3MdcvaZbDMo28AhMumAMhxwwIQroaAmc8EALw_wcB">5 ways to help you sleep</a>
     </div>
 </div>
-
-
 <script>
 function startCountdown() {
     let seconds = 10;
@@ -116,13 +113,11 @@ function startCountdown() {
             clearInterval(timer);
             countdownEl.textContent = "";
             titleEl.textContent = "00:00";
-
-          
             lightEl.style.opacity = 0;
+            images.forEach(img => img.classList.add("grayscale"));
         }
     }, 1000);
 }
 </script>
-
 </body>
 </html>
