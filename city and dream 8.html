@@ -6,42 +6,19 @@
   <title>City and Dream — 21:00</title>
   <style>
     body {
-      margin: 0;
-      padding: 0;
       font-family: Arial, sans-serif;
       color: #FFF58A;
       display: flex;
       justify-content: center;
       align-items: flex-start;
-      min-height: 100vh;
-      overflow-x: hidden;
-      background: radial-gradient(ellipse at top, #0b163d 0%, #000 95%);
-      position: relative;
+      background:#0b163d;
     }
-
-    .stars {
-      position: fixed;
-      inset: 0;
-      background: transparent;
-      overflow: hidden;
-      z-index: 0;
-    }
-
     .star {
       position: absolute;
       width: 2px;
       height: 2px;
       background: white;
-      border-radius: 50%;
-      opacity: 0.8;
-      animation: twinkle 2s infinite ease-in-out;
     }
-
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.2; }
-      50% { opacity: 1; }
-    }
-
     .container {
       max-width: 1000px;
       padding: 80px 20px 120px;
@@ -49,37 +26,27 @@
       z-index: 1;
       position: relative;
     }
-
     h1 {
       font-size: 12rem;
       margin-top: 40px;
-      margin-bottom: 40px;
-      letter-spacing: 2px;
-      color: #d3e9ff;
-      text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+      color: #fff;
     }
-
-    img {
+    .map-container img {
       width: 100%;
-      height: auto;
     }
-
     p {
       font-size: 1.2rem;
       line-height: 1.8;
       margin: 20px 0;
       color: #b0e0e6;
     }
-
     a {
-      font-size: 2rem;
+      font-size: 30px;
       color: #b0e0e6;
     }
-
     a:hover {
       color: #FF3F7F;
     }
-
     .marker {
       position: absolute;
       width: 22px;
@@ -87,23 +54,12 @@
       background: orange;
       border-radius: 50%;
       cursor: pointer;
-      box-shadow: 0 0 15px orange;
-      animation: pulse 1.5s infinite ease-in-out;
       transform: translate(-50%, -50%);
+      z-index: 3;
     }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1) translate(-50%, -50%); opacity: 0.8; }
-      50% { transform: scale(1.3) translate(-50%, -50%); opacity: 1; }
-    }
-
     .map-container {
       position: relative;
       display: inline-block;
-    }
-
-    .hidden {
-      display: none;
     }
   </style>
 </head>
@@ -114,46 +70,75 @@
     <h1>21:00</h1>
 
     <div id="mapStage">
-      <p style="font-size:1.4rem; margin-bottom:20px;">At 9pm, click on my favorite place in New York.</p>
-      <div class="map-container">
+      <p>At 9pm, click on my favorite place in New York.</p>
+      <div class="map-container" id="mapContainer" style="max-width:900px;">
         <img src="Images/map.jpg" alt="New York Map" />
+
         <div class="marker" id="timesSquareMarker" style="top:57%; left:54%;"></div>
+        <div class="marker" id="vesselMarker" style="top:77%; left:15%;"></div>
+        <div class="marker" id="centralParkMarker" style="top:15%; left:70%;"></div>
       </div>
     </div>
 
-    <div id="sceneStage" class="hidden">
-      <img src="Images/2.png" alt="Times Square Night" />
-      <a href="https://www.timessquarenyc.org/">Explore Times Square</a>
-      <br>
-      <p>
-        It wasn't until 9pm that Times Square truly became lively. People who come here seem to have forgotten time and are unwilling to go home. Cheap floats, modern shops, and I am also one of them.
-        I remember on the evening of October 25th, my friends and I were shopping at Times Square. We had delicious food and even bought milk tea. At that moment, I was the happiest person in the world.
-      </p>
-    </div>
+    <div id="sceneStage" class="hidden"></div>
   </div>
 
   <script>
     const starsContainer = document.getElementById('stars');
-    const numStars = 150; 
+    const numStars = 150;
     for (let i = 0; i < numStars; i++) {
       const star = document.createElement('div');
       star.classList.add('star');
       star.style.top = Math.random() * 100 + '%';
       star.style.left = Math.random() * 100 + '%';
-      star.style.width = star.style.height = Math.random() * 2 + 1 + 'px';
+      const size = (Math.random() * 2 + 1);
+      star.style.width = star.style.height = size + 'px';
       star.style.opacity = Math.random();
       star.style.animationDuration = (1.5 + Math.random() * 2) + 's';
       star.style.animationDelay = (Math.random() * 3) + 's';
       starsContainer.appendChild(star);
     }
 
-    const marker = document.getElementById('timesSquareMarker');
-    const mapStage = document.getElementById('mapStage');
-    const sceneStage = document.getElementById('sceneStage');
-
-    marker.addEventListener('click', () => {
+    function loadScene(img, link, text, titleText) {
       mapStage.classList.add('hidden');
       sceneStage.classList.remove('hidden');
+
+      sceneStage.innerHTML = `
+        <div style="max-width:900px; margin:0 auto; text-align:center;">
+          <h2 style="color:#d3e9ff; margin-top:18px;">${titleText || ''}</h2>
+          <img src="${img}" alt="${titleText || 'scene'}" style="width:100%; height:auto; margin-top:12px;"/>
+          <div style="margin:14px 0;">
+            <a href="${link}" target="_blank" rel="noreferrer">Learn More</a>
+          </div>
+          <p style="color:#b0e0e6; text-align:left;">${text}</p>
+        </div>`;
+    }
+
+    document.getElementById('timesSquareMarker').addEventListener('click', () => {
+      loadScene(
+        'Images/2.png',
+        'https://www.timessquarenyc.org/',
+        "Times Square becomes incredibly lively at 9pm. People who come here seem to have forgotten time and are unwilling to go home. Cheap floats, modern shops, and I am also one of them. I remember on the evening of October 25th, my friends and I were shopping at Times Square.",
+        'Times Square'
+      );
+    });
+
+    document.getElementById('vesselMarker').addEventListener('click', () => {
+      loadScene(
+        'Images/vessel.jpg',
+        'https://www.hudsonyardsnewyork.com/discover/vessel',
+        "The Vessel is one of the most unique structures in NYC. Its honeycomb-like stairs invite people to climb and look out across the city; at night the lights and shadows change its mood.",
+        'The Vessel'
+      );
+    });
+
+    document.getElementById('centralParkMarker').addEventListener('click', () => {
+      loadScene(
+        'Images/4.png',
+        'https://www.centralparknyc.org/',
+        "Central Park at night feels peaceful and quiet — different from Times Square. Walking along the paths you can still find small pockets of light and sounds from the city beyond.",
+        'Central Park'
+      );
     });
   </script>
 </body>
